@@ -1,0 +1,304 @@
+:root {
+    --yellow: #f7c800;
+    --orange: #e05a00;
+    --bg: #0f0f1a;
+    --red: #e63946;
+    --cream: #fff9e6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    font-family: 'Nunito', sans-serif;
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(rgba(247,200,0,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(247,200,0,.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+header {
+    text-align: center;
+    padding: 40px 20px 10px;
+    position: relative;
+    z-index: 1;
+}
+
+    header h1 {
+        font-family: 'Bangers', cursive;
+        font-size: clamp(2.4rem,7vw,5.5rem);
+        letter-spacing: 5px;
+        color: var(--yellow);
+        text-shadow: 5px 5px 0 #000, 3px 3px 0 var(--orange);
+        line-height: 1;
+    }
+
+    header .sub {
+        font-size: .9rem;
+        color: #aaa;
+        font-style: italic;
+        margin-top: 6px;
+    }
+
+/* DUCK STAGE */
+#stage {
+    position: relative;
+    width: 280px;
+    height: 285px;
+    margin: 6px auto 0;
+}
+
+#duck-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 255px;
+    animation: bob 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 14px 28px rgba(247,200,0,.25));
+    transition: filter .3s;
+}
+
+@keyframes bob {
+    0%,100% {
+        transform: translateX(-50%) translateY(0) rotate(-1.5deg);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px) rotate(1.5deg);
+    }
+}
+
+body.angry #duck-wrap {
+    animation: rage .12s linear infinite;
+    filter: drop-shadow(0 0 40px rgba(255,30,30,.95));
+}
+
+@keyframes rage {
+    0% {
+        transform: translateX(calc(-50% - 4px)) rotate(-4deg);
+    }
+
+    25% {
+        transform: translateX(calc(-50% + 4px)) rotate(4deg);
+    }
+
+    50% {
+        transform: translateX(calc(-50% - 3px)) rotate(-3deg);
+    }
+
+    75% {
+        transform: translateX(calc(-50% + 3px)) rotate(2deg);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 4px)) rotate(-4deg);
+    }
+}
+
+/* KNIFE — base position via CSS transform, angry raises it */
+#knife-group {
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+    transform: translate(95px,183px) scale(-.5,.5) rotate(-85deg) translate(-90px,-230px);
+}
+
+body.angry #knife-group {
+    transform: translate(95px,183px) scale(-.7,.7) rotate(-45deg) translate(-90px,-230px);
+}
+
+#beak-normal, #beak-angry {
+    transition: opacity .2s;
+}
+
+#ebrow {
+    transition: transform .3s;
+}
+
+#ebrow2 {
+    transition: transform .3s;
+}
+
+#sweat {
+    transition: opacity .3s;
+}
+
+/* speech bubble */
+#bubble {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    background: white;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 18px;
+    padding: 8px 14px;
+    font-family: 'Bangers',cursive;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: scale(.5) rotate(4deg);
+    transform-origin: bottom left;
+    transition: opacity .2s, transform .3s cubic-bezier(.34,1.56,.64,1);
+    pointer-events: none;
+    z-index: 10;
+}
+
+    #bubble::after {
+        content: '';
+        position: absolute;
+        bottom: 12px;
+        left: -13px;
+        border: 7px solid transparent;
+        border-right-color: #111;
+    }
+
+body.angry #bubble {
+    opacity: 1;
+    transform: scale(1) rotate(4deg);
+}
+
+/* MAIN */
+main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 8px 20px 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 18px 0 12px;
+}
+
+.card {
+    background: rgba(255,255,255,.04);
+    border: 2px solid rgba(247,200,0,.2);
+    border-radius: 16px;
+    padding: 16px 18px;
+    backdrop-filter: blur(6px);
+    transition: border-color .3s;
+}
+
+    .card:hover {
+        border-color: rgba(247,200,0,.5);
+    }
+
+    .card h2 {
+        font-family: 'Bangers',cursive;
+        font-size: 1.25rem;
+        letter-spacing: 1.5px;
+        color: var(--yellow);
+        margin-bottom: 8px;
+    }
+
+    .card p, .card li {
+        line-height: 1.55;
+        color: #ccc;
+        font-size: .88rem;
+    }
+
+    .card ul {
+        padding-left: 14px;
+    }
+
+    .card li {
+        margin-bottom: 2px;
+    }
+
+#contact-card {
+    border-color: rgba(230,57,70,.3);
+    cursor: crosshair;
+}
+
+    #contact-card.hovered {
+        border-color: rgba(230,57,70,.9);
+        background: rgba(230,57,70,.07);
+    }
+
+.c-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+}
+
+.c-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-size: .9rem;
+}
+
+    .c-row .ico {
+        font-size: 1.15rem;
+    }
+
+#warn-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Bangers',cursive;
+    font-size: .82rem;
+    letter-spacing: 1.5px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    animation: pulse 1.3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.07);
+    }
+}
+
+.fk {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity .3s;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body.angry .fk {
+    opacity: .6;
+}
+
+footer {
+    text-align: center;
+    color: #444;
+    font-size: .78rem;
+    padding-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
