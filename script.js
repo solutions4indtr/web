@@ -41,6 +41,7 @@ card.querySelectorAll('.c-row').forEach(r =>
 );
 
 card.addEventListener("touchstart", goAngry);
+card.addEventListener("touchend", goCalm);
 
 const langBtn = document.getElementById("lang-btn");
 const wheelModal = document.getElementById("lang-wheel");
