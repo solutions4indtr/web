@@ -231,10 +231,15 @@ main {
         border-color: rgba(230,57,70,.9);
         background: rgba(230,57,70,.07);
     }
-
+/*
 .c-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+}*/
+.c-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 0 20px;
 }
 
