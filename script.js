@@ -9,7 +9,7 @@ const sweat = document.getElementById('sweat');
 
 const msgs = [
     "HANDS OFF!! 🔪", "I SEE YOU!! 😡", "BACK AWAY!! 🔪",
-    "DON'T DO IT!! 😤", "I WARNED YOU!! 🔪", "GET OUT!! 😡", "LEAVE ME ALONE!","TOO BUSY FOR THAT 😡"
+    "DON'T DO IT!! 😤", "I WARNED YOU!! 🔪", "GET OUT!! 😡", "LEAVE ME ALONE!","TOO BUSY FOR THAT 😡",
 ];
 let mi = 0;
 
