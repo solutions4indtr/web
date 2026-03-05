@@ -39,3 +39,31 @@ card.addEventListener('mouseleave', goCalm);
 card.querySelectorAll('.c-row').forEach(r =>
     r.addEventListener('mouseenter', () => { bubble.textContent = msgs[mi++ % msgs.length]; })
 );
+
+card.addEventListener("touchstart", goAngry);
+
+const langBtn = document.getElementById("lang-btn");
+const wheelModal = document.getElementById("lang-wheel");
+const wheelImg = document.getElementById("wheel-img");
+const spinBtn = document.getElementById("spin-btn");
+
+let currentRotation = 0;
+
+langBtn.onclick = () => {
+    wheelModal.style.display = "flex";
+};
+
+wheelModal.onclick = (e) => {
+    if (e.target === wheelModal) {
+        wheelModal.style.display = "none";
+    }
+};
+
+spinBtn.onclick = () => {
+
+    const spins = 5 + Math.floor(Math.random() * 3);
+    currentRotation += (spins * 360);
+    wheelImg.style.transform = `rotate(${currentRotation}deg)`;
+
+
+};
