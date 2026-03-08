@@ -325,7 +325,7 @@ footer {
     border: 2px solid rgba(247,200,0,.5);
     padding: 6px 10px;
     border-radius: 10px;
-    z-index: 9999;
+    z-index: 99999;
 }
 
 #lang-wheel {
