@@ -54,14 +54,13 @@ header {
 #stage::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: -40px;
     background: radial-gradient(circle, rgba(247,200,0,.15), transparent 60%);
     filter: blur(40px);
-    z-index: -1;
+    z-index: 0;
 }
 
 #duck-wrap {
-    position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -70,6 +69,8 @@ header {
     animation: bob 1.8s ease-in-out infinite;
     filter: drop-shadow(0 14px 28px rgba(247,200,0,.25));
     transition: filter .3s;
+    position: absolute;
+    z-index: 1;
 }
 
 @keyframes bob {
@@ -376,4 +377,10 @@ footer {
 }
 html {
     scroll-behavior: smooth;
+}
+#stage {
+    position: relative;
+    width: 280px;
+    height: 285px;
+    margin: 6px auto 0;
 }
